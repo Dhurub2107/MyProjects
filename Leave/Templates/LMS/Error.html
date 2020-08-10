@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% csrf_token %}
+<style>
+    my{
+        height: 550px;
+        width: 1300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        color:red;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+</style>
+<head>
+    <title>Application Failed</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>    
+</head>
+<form action="Goback">
+    {% if user.is_authenticated %}
+    <body background="{% static 'images/DataIncorrect.jpg' %}">
+    <div>
+    <b><center><h1>Application Failed</h1></center></b>
+    {% for message in messages %}
+        <center><font color="red"><b><h1>{{message}}</h1></b></center>
+    {% endfor %}
+     
+    </div>
+    
+    <center><input class="btn btn-primary" type="submit" value="Go Back"></center>
+    {% else %} 
+        <b><center><h1 style="color: white;">Something went wrong Please login again</h1></center></b>
+        <body background="{% static 'images/404_error.jpg' %}">
+        <!-- <center><input class="btn btn-primary" type="submit" value="Go Back"></center> -->
+        <center><a href="home"><b style="font-size:25px; color: white;">Back</b></a></center>
+        </body>
+    {% endif %}
+</form>   
+</body>
+</html>

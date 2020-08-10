@@ -1,0 +1,143 @@
+{% load static %}
+<!-- Calender Script -->
+<style>
+    .shadow-textarea textarea.form-control::placeholder {
+      font-weight: 300;
+    }
+    .shadow-textarea textarea.form-control {
+      padding-left: 0.8rem;
+    }
+    
+    </style>
+    <style>
+      .right {
+        position: absolute;
+        right: 6px;
+        width: 50px;
+        border: 3px solid #73AD21;
+         
+      }
+      </style>
+    <!-- End -->
+    <script>
+        // Disable form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+             // Get the forms we want to add validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+        </script>
+       <script> 
+       document.getElementById("From").addEventListener("keyup", testpassword2);
+       document.getElementById("To").addEventListener("keyup", testpassword2);
+       function testpassword2() {
+       var text1 = document.getElementById("From");
+       var text2 = document.getElementById("TO");
+       if (text1.value == text2.value)
+          text2.style.borderColor = "#2EFE2E";
+       else
+          text2.style.borderColor = "red";
+        }
+    </script> 
+    <!DOCTYPE html>
+    <html lang="en">
+      {% if user.is_authenticated %}
+    <head>
+      <title>Employee Leave Application</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+    <div class="container">
+        <!-- Image and text -->
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand" href="home">
+          <img src="{% static 'images/iws.jpg' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+          <font color="White"><b>Leave Application Form</b></font><img src="{% static 'images/backicon.jpg' %}" class="right" width="40" height="40" class="d-inline-block align-top" alt="">
+        </a>
+      </nav>
+        <form action="LeaveApp" method="POST" class="needs-validation" novalidate>
+          {% csrf_token %}
+          {% for i in data %}
+            <div class="form-group">
+              <br><b><label for="uname">Name:</label>
+              <input type="text" class="form-control" value={{i.first_name}} id="uname" placeholder="Enter username" name="uname" disabled>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Email:</label>
+              <input type="email" class="form-control" id="pwd" placeholder="Enter Email" name="email" value={{i.email}} disabled>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Contact:</label>
+              <input type="text" class="form-control" id="pwd" placeholder="Enter Contact" name="cnct" required>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <br><label for="start">From:</label>&puncsp;&puncsp;<input type="date" id="From" name="From" value="" min="2020-01-01" max="2020-12-31">
+             
+            &puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;<label for="start">TO:</label>&puncsp;&puncsp;<input type="date" id="TO" name="To" value="" min="2020-01-01" max="2020-12-31">
+
+
+            &puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;<label for="cars" value="">Choose Leave Type *</label>
+              <select id="Leave"  name="select" required>
+               <option value="" selected="Select" disabled>Select</option>
+                <option value="ML">ML</option>
+                <option value="CL">CL</option>
+                <option value="Comp-OFF">Comp-OFF</option>
+              </select> 
+              
+              &puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;<label for="cars" value="">Choose Department*</label>
+              <select id="Leave" required name="DepartSelect">
+                <br><option value="" selected="Select" disabled>Select</option>
+                <option value="Web">Web</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Testing">Testing</option>
+                <option value="Marketing">Marketing</option>
+              </select>
+              
+              <div class="form-group shadow-textarea" >
+                <br><label for="exampleFormControlTextarea6">Reason For Leave*</label>
+                <textarea class="form-control z-depth-1" name="reason"id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..." required></textarea>
+              </div>
+              
+            <div class="form-group form-check">
+              <label class="form-check-label">
+                <br><input class="form-check-input" type="checkbox" name="remember" required> I agree on above Details
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Check this checkbox to continue.</div>
+              </label>
+            </div>
+            {% endfor %}
+            <center><button type="submit" class="btn btn-primary">Submit</button>
+              <!-- <button type="submit" class="btn btn-primary">Back</button><center> -->
+            {% else %} 
+              <b><center><h1 style="color: white;">Something went wrong Please Go back and login again</h1></center></b>
+              <body background="{% static 'images/404_error.jpg' %}">
+              <!-- <center><input class="btn btn-primary" type="submit" value="Go Back"></center> -->
+              <center><a href="home"><b style="font-size:25px; color: white;">Back</b></a></center>
+              </body>
+            {% endif %}    
+          </form>
+        </body> 
+    </html>

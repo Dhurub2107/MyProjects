@@ -1,0 +1,106 @@
+<!-- {% for temp in Emp_Manager %} -->
+<!-- <h1>Manager:{{ temp.Manager_id }}</h1> -->
+<!-- <h1>Department:{{ temp.Department_id }}</h1> -->
+<!-- {% endfor %}  -->
+
+
+<!-- {% for temp2 in Leave_Type %} -->
+<!-- <h1>Manager:{{ temp2.Emp_ML }}</h1> -->
+<!-- <h1>Department:{{ temp2.Emp_CL }}</h1> -->
+<!-- {% endfor %}  -->
+<style>
+    tbl{
+    
+    color: white;
+        
+    }
+    
+    td{
+        color:red;
+    }
+    </style>
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    {% if user.is_authenticated %}
+    <!-- if user.is_staff -->
+        
+    <head>
+      <title>Pending Requests</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body background="{% static 'images/HistoryNew.jpg' %}"></body>
+    <form action="home" method="POST">
+    {% csrf_token %}
+    <div class="container">
+        
+        <center><b><h1 style="color: red;">Leave Request</b></h1></center>&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;
+      &puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;
+      <input class="btn btn-primary" type="submit" value="Back">
+      <!-- <p>This is Your Leave Leave_history</p>-->
+      
+      <table class="table">
+        <thead>
+          <tr>
+            <!-- <th>Application_Id</th> -->
+            <th>Firstname</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Leave Type</th>
+            <th>No of Days</th>
+            <th>Apply Date</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Action</th>
+            <th>Forword</th>
+          </tr>
+        </thead>
+        {% for i in Emp %}
+        <tbody>
+          <tr class="tbl">
+            <!-- <td>{{i.id}}</td> -->
+            <td>{{i.Name}}</td>
+            <td>{{i.From_Date}}</td>
+            <td>{{i.To_Date}}</td>
+            <td>{{i.Leave_Type}}</td>
+            <td>{{i.No_Days}}</td>
+            <td>{{i.Apply_Date}}</td>
+            <td>{{i.Reason}}</td>
+            <td>{{i.Manager_Remark}}</td>
+            <!-- <td><input type='submit' name='item_id' value="Approve" /></td> -->
+            <!-- <td><input type='submit' name='item_id' value="Reject" /></td> -->
+            <!-- <td><input type='submit'  value="Accept" /> </td> -->
+            <!-- <input id="app_id" type="text" name="name" value="{{ i.id }}"> -->
+            <td><b><i><a href="LeaveApprove?parameter={{ i.id }}">Approve /<a href="LeaveReject?parameter={{ i.id }}">Reject</a></i></b></td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Chose Action
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for j in  Mgr %}
+                        <a class="dropdown-item" href="LeaveForword?appid={{i.id}}&managerid={{j.Manager_id}}">{{j.Manager_Name}}</a>
+                        {% endfor %}
+                    </div>
+            </div>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    </form> 
+    {% else %}
+    
+    <b><center><h1 style="color: white;">Something went wrong Please Go back and login again</h1></center></b>
+    <body background="{% static 'images/404_error.jpg' %}">
+    <!-- <center><input class="btn btn-primary" type="submit" value="Go Back"></center> -->
+    <center><a href="home"><b style="font-size:25px; color: white;">Back</b></a></center>
+    </body>
+    {% endif %}  
+    </body>
+    </html>

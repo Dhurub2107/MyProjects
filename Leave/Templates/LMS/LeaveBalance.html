@@ -1,0 +1,69 @@
+{% load static %}
+<style>
+  th{
+    color: whitesmoke;
+  }
+  td{
+    color: black;
+    font-family: cursive;
+  }
+  </style>
+<!DOCTYPE html>
+<html lang="en"> 
+<!-- {% csrf_token %} -->
+<head>
+  <title>Employee LeaveBalance</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body background="{% static 'images/LeaveBal2.jpg' %}"></body>
+    <form action="Back" method="POST">
+    {% if user.is_authenticated %} 
+  <!-- <h1>IWEB</h1> -->
+  <!-- {% for temp in My_Leave %} -->
+    <!-- <h1>{{temp.Emp_ML}}</h1> -->
+    <!-- <h1>{{temp.Emp_CompOff}}</h1> -->
+  <!-- {% endfor %} -->
+<br><div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Type of Leave</th>
+        <th>No of Leaves</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in My_Leave %}
+      <tr class="success">
+        <td class="td ">ML</td>
+        <td>{{ i.Emp_ML }}</td>
+      </tr>
+      <tr class="danger">
+        <td>CL</td>
+        <td>{{ i.Emp_CL }}</td>
+      </tr>
+      <tr class="info">
+        <td>Comp-Off</td>
+        <td>{{ i.Emp_CompOff }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% csrf_token %}
+  <center><button type="submit" class="btn btn-primary">Back</button></center>
+  <!-- <button type="button" class="btn btn-outline-primary">Primary</button> -->
+</div>
+{% else %}  
+      <b><center><h1 style="color: white;">Can Not Access This Page Please Login First</h1></center></b>
+      <body background="{% static 'images/404_error.jpg' %}">
+      <center><input class="btn btn-primary" type="submit" value="Go Back"></center>
+      </body>
+{% endif %}
+</form>
+</body>
+ 
+</html>

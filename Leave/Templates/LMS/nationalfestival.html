@@ -1,0 +1,79 @@
+<!-- {% for temp in Emp_Manager %} -->
+<!-- <h1>Manager:{{ temp.Manager_id }}</h1> -->
+<!-- <h1>Department:{{ temp.Department_id }}</h1> -->
+<!-- {% endfor %}  -->
+
+
+<!-- {% for temp2 in Leave_Type %} -->
+<!-- <h1>Manager:{{ temp2.Emp_ML }}</h1> -->
+<!-- <h1>Department:{{ temp2.Emp_CL }}</h1> -->
+<!-- {% endfor %}  -->
+<style>
+    tbl{
+    
+    color: white;
+        
+    }
+    
+    td{
+        color:white;
+        font-size: large;
+        font-family: cursive;
+        font-style: oblique;
+    }
+    th{
+        color: black;
+    }
+    </style>
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    {% if user.is_authenticated %}
+    <head>
+      <title>Company Holiday</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body background="{% static 'images/festi2.jpg' %}"></body>
+    <form action="Back">
+        
+    <div class="container">
+        
+        <center><b><h1 style="color: red;">Company Holiday</b></h1></center>&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;
+      &puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;&puncsp;
+      <input class="btn btn-primary" type="submit" value="Back">
+      <!-- <p>This is Your Leave Leave_history</p>-->
+      
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Festival</th>
+            <th>Festival Type</th>
+          </tr>
+        </thead>
+        {% for i in holiday %}
+        <tbody>
+          <tr class="tbl">
+            <td>{{i.Date}}</td>
+            <td>{{i.Festival_Name}}</td>
+            <td>{{i.Type}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    </form>
+    {% else %}
+    
+    <b><center><h1 style="color: white;">Something went wrong Please Go back and login again</h1></center></b>
+    <body background="{% static 'images/404_error.jpg' %}">
+    <!-- <center><input class="btn btn-primary" type="submit" value="Go Back"></center> -->
+    <center><a href="home"><b style="font-size:25px; color: white;">Back</b></a></center>
+    </body>
+    {% endif %} 
+    </body>
+    </html>

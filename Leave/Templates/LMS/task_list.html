@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Task List</h1>
+    <a class="btn btn-primary mb-2" href="#" role="button">Create Task</a>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+                <tr>
+                  <th>Application_Id</th>
+                  <th>Firstname</th>
+                  <th>From Date</th>
+                  <th>To Date</th>
+                  <th>Leave Type</th>
+                  <th>No of Days</th>
+                  <th>Apply Date</th>
+                  <th>Reason</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+        </thead>
+        
+        {% for i in Emp %}
+        <tbody>
+          <tr class="tbl">
+            <td>{{i.id}}</td>
+            <td>{{i.Name}}</td>
+            <td>{{i.From_Date}}</td>
+            <td>{{i.To_Date}}</td>
+            <td>{{i.Leave_Type}}</td>
+            <td>{{i.No_Days}}</td>
+            <td>{{i.Apply_Date}}</td>
+            <td>{{i.Reason}}</td>
+            <td>{{i.Manager_Remark}}</td>
+            <!-- <td>{{i.Manager}} -->
+            <td>
+                        <td>
+                        <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Chose Action
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">{{i.Manager_Name}}</a>
+                                    <a class="dropdown-item" href="#">Edit</a>
+                                    <a class="dropdown-item" href="#">Take</a>
+                                    <a class="dropdown-item" href="#">Done</a>
+                                    <a class="dropdown-item" href="#">Delete</a>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

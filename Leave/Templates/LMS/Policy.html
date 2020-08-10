@@ -1,0 +1,31 @@
+{% load static %}
+<h1>{{days}}</h1>
+<head>
+<title>Leave Policy</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<form action="SubGoback">
+{% if user.is_authenticated %}
+<body background="{% static 'images/PolicyNew1.jpg' %}">
+<strong><center><b><h1 style="color:red; font-size: 300%;">&nbsp;&nbsp;&nbsp;Leave Policy</h1></b></center></strong>
+<!-- <center><b><h1 style="color: whitesmoke;">Leave Policy</b></h1></center> -->
+<strong><ul style="color:white; font-size:220%">
+    <li>1 ML and 1 CL Credit Every Month For Non-Probation Period Employees and 0.5 ML and 0.5 CL For Under probation Period Employees.</li><br>
+    <li>Only Approved Leaves Counted as Leave otherwise Mark as LWP for all Employees.</li><br>
+    <li>If any Employee is on Leave on Friday and Monday is counted as sandwich Leave(ie-Fri,Sat,Sun,Mon).</li><br>
+    <li>If any Employee work on weekends(Sat/Sun) then Comp-Off Leaves credited in his/her Leave Account after Manager Approval.</li><br>
+    <li>Apply Sheduled Leave before 10 days from Leave Date.</li>
+  </ul></strong>
+  <br><center><input class="btn btn-primary" type="submit" value="Back"></center>
+{% else %}  
+        <b><center><h1 style="color: white;">Can Not Access This page Please Login First</h1></center></b>
+        <body background="{% static 'images/404_error.jpg' %}">
+        <center><input class="btn btn-primary" type="submit" value="Go Back"></center>
+        </body>
+{% endif %}
+</body>
+</form>
